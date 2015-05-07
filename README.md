@@ -2,7 +2,7 @@
 
 These are docker images for [Distribution](https://github.com/docker/distribution) running on an
 [Alpine Linux container](https://registry.hub.docker.com/u/webhippie/alpine/).
-The cuurrent container size is ```46.48 MB```
+The current container size is ```76.44 MB```
 
 
 ## Usage
