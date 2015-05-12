@@ -2,7 +2,6 @@
 
 These are docker images for [Distribution](https://github.com/docker/distribution) running on an
 [Alpine Linux container](https://registry.hub.docker.com/u/webhippie/alpine/).
-The current container size is ```76.44 MB```
 
 
 ## Usage
@@ -99,4 +98,6 @@ MIT
 
 ## Copyright
 
+```
 Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
+```

@@ -13,11 +13,10 @@ ENV REGISTRY_BRANCH master
 
 ENV GOPATH /usr:/usr/src/${REGISTRY_PATH}/Godeps/_workspace
 
-RUN apk-install build-base git mercurial go && \
+RUN apk add --update build-base git mercurial go && \
   git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/src/${REGISTRY_PATH} && \
   go get ${REGISTRY_PATH}/... && \
   go install ${REGISTRY_PATH} && \
-  apk update && \
   apk del build-base git mercurial go && \
   rm -rf /var/cache/apk/* && \
   rm -r /usr/src/*
@@ -26,5 +25,4 @@ ADD rootfs /
 EXPOSE 5000
 
 WORKDIR /root
-ENTRYPOINT ["/usr/bin/s6-svscan","/etc/s6"]
-CMD []
+CMD ["/usr/bin/s6-svscan","/etc/s6"]
