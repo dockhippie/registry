@@ -1,12 +1,6 @@
 FROM webhippie/alpine:latest
 MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
-ENV DISCOVERY_TYPE etcd
-ENV DISCOVERY_HOST http://127.0.0.1
-ENV DISCOVERY_PORT 4001
-ENV DISCOVERY_INTERVAL 30
-ENV DISCOVERY_PREFIX /
-
 ENV REGISTRY_PATH github.com/docker/distribution
 ENV REGISTRY_REPO https://${REGISTRY_PATH}.git
 ENV REGISTRY_BRANCH master

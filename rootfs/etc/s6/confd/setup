@@ -1,15 +1,47 @@
 #!/bin/bash
 
+declare -x DISCOVERY_TYPE
+declare -x DISCOVERY_HOST
+declare -x DISCOVERY_PORT
+declare -x DISCOVERY_INTERVAL
+declare -x DISCOVERY_PREFIX
+declare -x DISCOVERY_COMMAND
+
+if [ -z "${DISCOVERY_TYPE}" ]
+then
+  DISCOVERY_TYPE="etcd"
+fi
+
+if [ -z "${DISCOVERY_HOST}" ]
+then
+  DISCOVERY_HOST="http://etcd"
+fi
+
+if [ -z "${DISCOVERY_PORT}" ]
+then
+  DISCOVERY_PORT=2379
+fi
+
+if [ -z "${DISCOVERY_INTERVAL}" ]
+then
+  DISCOVERY_INTERVAL=30
+fi
+
+if [ -z "${DISCOVERY_PREFIX}" ]
+then
+  DISCOVERY_PREFIX="/"
+fi
+
 case "${DISCOVERY_TYPE}" in
   etcd)
-    DISCOVERY_COMMAND="confd -backend etcd -node ${DISCOVERY_HOST}:${DISCOVERY_PORT} -prefix ${DISCOVERY_PREFIX}"
+    declare -x ETCDCTL_COMMAND
 
     if [ -n "${DISCOVERY_CLIENT_KEY}" ]
     then
       if [ ! -f "${DISCOVERY_CLIENT_KEY}" ]
       then
         echo -e "${DISCOVERY_CLIENT_KEY}" >| /tmp/etcd.key
-        export DISCOVERY_CLIENT_KEY=/tmp/etcd.key
+        DISCOVERY_CLIENT_KEY="/tmp/etcd.key"
       fi
     fi
 
@@ -18,7 +50,7 @@ case "${DISCOVERY_TYPE}" in
       if [ ! -f "${DISCOVERY_CLIENT_CERT}" ]
       then
         echo -e "${DISCOVERY_CLIENT_CERT}" >| /tmp/etcd.crt
-        export DISCOVERY_CLIENT_CERT=/tmp/etcd.crt
+        DISCOVERY_CLIENT_CERT="/tmp/etcd.crt"
       fi
     fi
 
@@ -27,8 +59,35 @@ case "${DISCOVERY_TYPE}" in
       if [ ! -f "${DISCOVERY_CLIENT_CA}" ]
       then
         echo -e "${DISCOVERY_CLIENT_CA}" >| /tmp/ca.crt
-        export DISCOVERY_CLIENT_CA=/tmp/ca.crt
+        DISCOVERY_CLIENT_CA="/tmp/ca.crt"
       fi
+    fi
+
+    if [ -z "${ETCDCTL_COMMAND}" ]
+    then
+      ETCDCTL_COMMAND="/usr/bin/etcdctl --peers=${DISCOVERY_HOST}:${DISCOVERY_PORT}"
+    else
+      ETCDCTL_COMMAND="${ETCDCTL_COMMAND} --peers=${DISCOVERY_HOST}:${DISCOVERY_PORT}"
+    fi
+
+    if [ -n "${DISCOVERY_CLIENT_KEY}" ]
+    then
+      ETCDCTL_COMMAND="${ETCDCTL_COMMAND} --key-file=${DISCOVERY_CLIENT_KEY}"
+    fi
+
+    if [ -n "${DISCOVERY_CLIENT_CERT}" ]
+    then
+      ETCDCTL_COMMAND="${ETCDCTL_COMMAND} --cert-file=${DISCOVERY_CLIENT_CERT}"
+    fi
+
+    if [ -n "${DISCOVERY_CLIENT_CA}" ]
+    then
+      ETCDCTL_COMMAND="${ETCDCTL_COMMAND} --ca-file=${DISCOVERY_CLIENT_CA}"
+    fi
+
+    if ! ${ETCDCTL_COMMAND} ls ${DISCOVERY_PREFIX} > /dev/null 2>&1
+    then
+      ${ETCDCTL_COMMAND} mkdir ${DISCOVERY_PREFIX}
     fi
     ;;
 esac
