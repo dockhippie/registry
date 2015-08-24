@@ -6,4 +6,4 @@ keys = [
   "/"
 ]
 
-reload_cmd = "s6-svscanctl -h /etc/s6/registry"
+reload_cmd = "s6-svc -h /etc/s6/registry"

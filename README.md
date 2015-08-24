@@ -1,13 +1,17 @@
 # Registry
 
+[![](https://badge.imagelayers.io/webhippie/registry:latest.svg)](https://imagelayers.io/?images=webhippie/registry:latest 'Get your own badge on imagelayers.io')
+
 These are docker images for [Distribution](https://github.com/docker/distribution) running on an
 [Alpine Linux container](https://registry.hub.docker.com/u/webhippie/alpine/).
 
 
 ## Usage
 
-```
-docker run -ti --name registry webhippie/registry:latest
+```bash
+docker run -ti \
+  --name registry \
+  webhippie/registry:latest
 ```
 
 
@@ -30,6 +34,20 @@ ENV DISCOVERY_OPTS # Optional, any allowed confd param
 ENV DISCOVERY_CLIENT_KEY # Optional, as string or filename
 ENV DISCOVERY_CLIENT_CERT # Optional, as string or filename
 ENV DISCOVERY_CLIENT_CA # Optional, as string or filename
+```
+
+
+## Inherited environment variables
+
+```bash
+ENV LOGSTASH_ENABLED false
+ENV LOGSTASH_HOST logstash
+ENV LOGSTASH_PORT 5043
+ENV LOGSTASH_CA /etc/ssl/logstash/certs/ca.pem # As string or filename
+ENV LOGSTASH_CERT /etc/ssl/logstash/certs/cert.pem # As string or filename
+ENV LOGSTASH_KEY /etc/ssl/logstash/private/cert.pem # As string or filename
+ENV LOGSTASH_TIMEOUT 15
+ENV LOGSTASH_OPTS
 ```
 
 
