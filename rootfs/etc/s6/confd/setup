@@ -5,7 +5,6 @@ declare -x DISCOVERY_HOST
 declare -x DISCOVERY_PORT
 declare -x DISCOVERY_INTERVAL
 declare -x DISCOVERY_PREFIX
-declare -x DISCOVERY_COMMAND
 
 if [ -z "${DISCOVERY_TYPE}" ]
 then
@@ -29,7 +28,7 @@ fi
 
 if [ -z "${DISCOVERY_PREFIX}" ]
 then
-  DISCOVERY_PREFIX="/"
+  DISCOVERY_PREFIX="/registry"
 fi
 
 case "${DISCOVERY_TYPE}" in

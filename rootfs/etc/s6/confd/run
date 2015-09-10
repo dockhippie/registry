@@ -2,12 +2,14 @@
 
 if [ -f ./setup ]
 then
-  ./setup
+  source ./setup
 fi
+
+STARTCMD="/usr/bin/confd -interval ${DISCOVERY_INTERVAL} -log-level info"
 
 case "${DISCOVERY_TYPE}" in
   etcd)
-    STARTCMD="confd -backend etcd -node ${DISCOVERY_HOST}:${DISCOVERY_PORT} -prefix ${DISCOVERY_PREFIX}"
+    STARTCMD="${STARTCMD} -backend etcd -node ${DISCOVERY_HOST}:${DISCOVERY_PORT} -prefix ${DISCOVERY_PREFIX}"
 
     if [ -n "${DISCOVERY_CLIENT_KEY}"  ]
     then
@@ -28,12 +30,12 @@ case "${DISCOVERY_TYPE}" in
     ;;
 
   consul)
-    STARTCMD="confd -backend consul -node ${DISCOVERY_HOST}:${DISCOVERY_PORT} -prefix ${DISCOVERY_PREFIX} ${DISCOVERY_OPTS}"
+    STARTCMD="${STARTCMD} -backend consul -node ${DISCOVERY_HOST}:${DISCOVERY_PORT} -prefix ${DISCOVERY_PREFIX} ${DISCOVERY_OPTS}"
     ;;
 
   env)
-    STARTCMD="confd -backend env -prefix ${DISCOVERY_PREFIX} ${DISCOVERY_OPTS}"
+    STARTCMD="${STARTCMD} -backend env -prefix ${DISCOVERY_PREFIX} ${DISCOVERY_OPTS}"
     ;;
 esac
 
-exec ${STARTCMD} -interval ${DISCOVERY_INTERVAL} -log-level info
+exec ${STARTCMD}
