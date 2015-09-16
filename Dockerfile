@@ -14,11 +14,13 @@ RUN apk update && \
     mercurial \
     go && \
   git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/src/${REGISTRY_PATH} && \
-  go get ${REGISTRY_PATH}/... && \
+  go get -d ${REGISTRY_PATH}/... && \
   go install ${REGISTRY_PATH} && \
   apk del build-base git mercurial go && \
   rm -rf /var/cache/apk/* && \
-  rm -r /usr/src/*
+  rm -r \
+    /usr/src/* \
+    /usr/pkg/*
 
 ADD rootfs /
 EXPOSE 5000
