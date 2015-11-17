@@ -12,18 +12,21 @@ RUN apk update && \
     build-base \
     git \
     mercurial \
-    go && \
+    go@community && \
   git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/src/${REGISTRY_PATH} && \
-  go get -d ${REGISTRY_PATH}/... && \
-  go install ${REGISTRY_PATH} && \
+  cd /usr/src/${REGISTRY_PATH} && \
+  go get -u github.com/tools/godep && \
+  godep go install ${REGISTRY_PATH} && \
   apk del build-base git mercurial go && \
   rm -rf /var/cache/apk/* && \
   rm -r \
     /usr/src/* \
-    /usr/pkg/*
+    /usr/pkg/* \
+    /usr/lib/go \
+    /usr/bin/godep
 
 ADD rootfs /
 EXPOSE 5000
 
 WORKDIR /root
-CMD ["/usr/bin/s6-svscan", "/etc/s6"]
+CMD ["/bin/s6-svscan", "/etc/s6"]
