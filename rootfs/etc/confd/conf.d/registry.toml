@@ -1,9 +1,0 @@
-[template]
-src = "registry.yml.tmpl"
-dest = "/etc/registry/config.yml"
-
-keys = [
-  "/"
-]
-
-reload_cmd = "s6-svc -h /etc/s6/registry"

@@ -5,7 +5,7 @@ ENV REGISTRY_PATH github.com/docker/distribution
 ENV REGISTRY_REPO https://${REGISTRY_PATH}.git
 ENV REGISTRY_BRANCH master
 
-ENV GOPATH /usr:/usr/src/${REGISTRY_PATH}/Godeps/_workspace
+ENV GOPATH /usr/local:/usr/src/${REGISTRY_PATH}/Godeps/_workspace
 
 RUN apk update && \
   apk add \
@@ -13,16 +13,23 @@ RUN apk update && \
     go@community \
     git \
     mercurial && \
-  git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/src/${REGISTRY_PATH} && \
-  cd /usr/src/${REGISTRY_PATH} && \
+  git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/local/src/${REGISTRY_PATH} && \
+  cd /usr/local/src/${REGISTRY_PATH} && \
   go get -u github.com/tools/godep && \
   godep go install ${REGISTRY_PATH} && \
-  apk del build-base go git mercurial && \
-  rm -rf /var/cache/apk/* && \
-  rm -r \
-    /usr/src/* \
-    /usr/pkg/* \
-    /usr/bin/godep
+  cp -f \
+    /usr/local/bin/registry \
+    /usr/bin/ && \
+  apk del \
+    build-base \
+    go \
+    git \
+    mercurial && \
+  rm -rf \
+    /var/cache/apk/* \
+    /usr/local/*
+
+VOLUME ["/var/lib/registry"]
 
 ADD rootfs /
 EXPOSE 5000
