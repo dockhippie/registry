@@ -10,7 +10,7 @@ ENV GOPATH /usr/local:/usr/src/${REGISTRY_PATH}/Godeps/_workspace
 RUN apk update && \
   apk add \
     build-base \
-    go@community \
+    go \
     git \
     mercurial && \
   git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /usr/local/src/${REGISTRY_PATH} && \
