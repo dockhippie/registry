@@ -5,5 +5,5 @@ then
   source ./setup
 fi
 
-STARTCMD="/usr/bin/registry /etc/registry/config.yml"
+STARTCMD="su-exec registry /usr/bin/registry serve /etc/registry/config.yml"
 exec ${STARTCMD}

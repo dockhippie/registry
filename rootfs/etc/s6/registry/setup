@@ -1,1 +1,4 @@
 #!/bin/bash
+
+chown -R registry:registry \
+  /var/lib/registry
