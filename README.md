@@ -1,5 +1,6 @@
 # Registry
 
+[![Build Status](https://cloud.drone.io/api/badges/dockhippie/registry/status.svg)](https://cloud.drone.io/dockhippie/registry)
 [![](https://images.microbadger.com/badges/image/webhippie/registry.svg)](https://microbadger.com/images/webhippie/registry "Get your own image badge on microbadger.com")
 
 These are docker images for [Distribution](https://github.com/docker/distribution) running on an [Alpine Linux container](https://registry.hub.docker.com/u/webhippie/alpine/).
@@ -7,7 +8,7 @@ These are docker images for [Distribution](https://github.com/docker/distributio
 
 ## Versions
 
-* [latest](https://github.com/dockhippie/registry/tree/master) available as ```webhippie/registry:latest``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/registry/)
+* [latest](./latest) available as `webhippie/registry:latest`
 
 
 ## Volumes
@@ -28,9 +29,7 @@ These are docker images for [Distribution](https://github.com/docker/distributio
 
 ## Inherited environment variables
 
-```bash
-ENV CRON_ENABLED false
-```
+* [webhippie/alpine](https://github.com/dockhippie/alpine#available-environment-variables)
 
 
 ## Contributing
@@ -51,5 +50,5 @@ MIT
 ## Copyright
 
 ```
-Copyright (c) 2015-2017 Thomas Boerger <http://www.webhippie.de>
+Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
 ```

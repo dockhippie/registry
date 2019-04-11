@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ -f ./setup ]
-then
-  source ./setup
-fi
-
-STARTCMD="su-exec registry /usr/bin/registry serve /etc/registry/config.yml"
-exec ${STARTCMD}
