@@ -1,0 +1,19 @@
+image: webhippie/registry:latest
+manifests:
+  -
+    image: webhippie/registry:latest-amd64
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: webhippie/registry:latest-arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
+  -
+    image: webhippie/registry:latest-arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
