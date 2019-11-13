@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.12 as build
+FROM webhippie/golang:1.12-amd64 as build
 
 ENV REGISTRY_PATH github.com/docker/distribution
 ENV REGISTRY_REPO https://${REGISTRY_PATH}.git
@@ -8,7 +8,7 @@ RUN git clone -b ${REGISTRY_BRANCH} ${REGISTRY_REPO} /srv/app/src/${REGISTRY_PAT
   cd /srv/app/src/${REGISTRY_PATH} && \
   go install ./cmd/...
 
-FROM webhippie/alpine:latest
+FROM webhippie/alpine:latest-amd64
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Registry" \
