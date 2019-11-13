@@ -24,7 +24,9 @@ These are docker images for [Distribution](https://github.com/docker/distributio
 ## Available environment variables
 
 ```bash
-
+REGISTRY_HEALTHCHECK_CODE = 200
+REGISTRY_HEALTHCHECK_URL = http://localhost:5000
+REGISTRY_SKIP_CHOWN = false
 ```
 
 
