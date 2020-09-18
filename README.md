@@ -35,6 +35,11 @@ REGISTRY_SKIP_CHOWN = false
 * [webhippie/alpine](https://github.com/dockhippie/alpine#available-environment-variables)
 
 
+## Running Behind NGINX
+
+`proxy_set_header X-Forwarded-Proto https` is required to push to images
+
+
 ## Contributing
 
 Fork -> Patch -> Push -> Pull Request
