@@ -37,7 +37,7 @@ REGISTRY_SKIP_CHOWN = false
 
 ## Running Behind NGINX
 
-`proxy_set_header X-Forwarded-Proto https` is required to push to images
+`proxy_set_header X-Forwarded-Proto https;` is required to push to images
 
 
 ## Contributing
