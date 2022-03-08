@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.16-amd64@sha256:d0c7a1c41cafabd20bcce8e00cb282cbc96ff6c4d34148ce26e8866db7909a14 as build
+FROM webhippie/golang:1.17-amd64@sha256:481ff3d39a855cd120699edb8bde500911e32ee6ed20a9221e00c34011c727b4 as build
 
 RUN git clone -b main https://github.com/distribution/distribution.git /srv/app/src && \
   cd /srv/app/src && \
