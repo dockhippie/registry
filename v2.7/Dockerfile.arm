@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.17-arm@sha256:608a502473e34813851a7f0861b927476d852ec1b1b423dddbe8ca181fed52c8 as build
+FROM webhippie/golang:1.17-arm@sha256:a9e2ddf39aab655d1b53f79abfe55e59f4ca80295276547df0c3190ff5757c4d as build
 
 # renovate: datasource=github-tags depName=distribution/distribution
 ENV REGISTRY_VERSION=v2.8.1
