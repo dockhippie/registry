@@ -8,7 +8,8 @@
     "ignorePaths": [
         "archive/"
     ],
-    "packageRules": [{
+    "packageRules": [
+        {
             "description": "Update golang docker images",
             "datasources": [
                 "docker"
@@ -21,23 +22,25 @@
             "automerge": true
         },
         {
-            "description": "Update tags without merge",
+            "description": "Disable version tag updates",
             "datasources": [
-                "github-tags"
+                "github-tags",
+                "github-releases"
             ],
             "updateTypes": [
-                "major"
+                "major",
+                "minor"
             ],
             "enabled": false,
             "automerge": false
         },
         {
-            "description": "Update tags without merge",
+            "description": "Enable version tag updates",
             "datasources": [
-                "github-tags"
+                "github-tags",
+                "github-releases"
             ],
             "updateTypes": [
-                "minor",
                 "patch"
             ],
             "enabled": true,
