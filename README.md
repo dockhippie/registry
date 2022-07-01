@@ -1,20 +1,23 @@
 # registry
 
-[![Docker Build](https://github.com/dockhippie/registry/workflows/docker/badge.svg)](https://github.com/dockhippie/registry/actions?query=workflow%3Adocker) [![Readme Build](https://github.com/dockhippie/registry/workflows/readme/badge.svg)](https://github.com/dockhippie/registry/actions?query=workflow%3Areadme) [![Docker Size](https://img.shields.io/docker/image-size/webhippie/registry/latest)](#) [![Docker Pulls](https://img.shields.io/docker/pulls/webhippie/registry)](https://hub.docker.com/r/webhippie/registry) [![GitHub Repo](https://img.shields.io/badge/github-repo-yellowgreen)](https://github.com/dockhippie/registry)
+[![Docker Build](https://github.com/dockhippie/registry/actions/workflows/docker.yml/badge.svg)](https://github.com/dockhippie/registry/actions/workflows/docker.yml) [![GitHub Repo](https://img.shields.io/badge/github-repo-yellowgreen)](https://github.com/dockhippie/registry)
 
-These are docker images for [Distribution](https://github.com/docker/distribution) running on our [Alpine Linux image](https://github.com/dockhippie/alpine).
+These are docker images for [Distribution][upstream] running on our
+[Alpine Linux image][parent].
 
 ## Versions
 
-For the available versions please look at [Docker Hub](https://hub.docker.com/r/webhippie/registry/tags) or [Quay](https://quay.io/repository/webhippie/registry?tab=tags) or check the existing folders within the [GitHub repository](https://github.com/dockhippie/registry).
+For the available versions please look at [Docker Hub][dockerhub] or
+[Quay][quayio] or check the existing folders within the
+[GitHub repository][github].
 
 ## Volumes
 
-* /var/lib/registry
+*  /var/lib/registry
 
 ## Ports
 
-* 5000
+*  5000
 
 ## Available environment variables
 
@@ -45,3 +48,9 @@ MIT
 ```console
 Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
 ```
+
+[upstream]: https://github.com/docker/distribution
+[parent]: https://github.com/dockhippie/alpine
+[dockerhub]: https://hub.docker.com/r/webhippie/registry/tags
+[quayio]: https://quay.io/repository/webhippie/registry?tab=tags
+[github]: https://github.com/dockhippie/registry
