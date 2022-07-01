@@ -24,8 +24,7 @@
         {
             "description": "Disable version tag updates",
             "datasources": [
-                "github-tags",
-                "github-releases"
+                "github-tags"
             ],
             "updateTypes": [
                 "major",
@@ -37,8 +36,7 @@
         {
             "description": "Enable version tag updates",
             "datasources": [
-                "github-tags",
-                "github-releases"
+                "github-tags"
             ],
             "updateTypes": [
                 "patch"

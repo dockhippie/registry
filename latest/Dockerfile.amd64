@@ -1,10 +1,10 @@
-FROM webhippie/golang:1.16-amd64 as build
+FROM webhippie/golang:1.18-amd64@sha256:f70fb613397042d3128c0508beaa818e13ca1e7777169bca698be9cf65b661c0 as build
 
 RUN git clone -b main https://github.com/distribution/distribution.git /srv/app/src && \
   cd /srv/app/src && \
   GO111MODULE=on go install ./cmd/...
 
-FROM webhippie/alpine:latest-amd64
+FROM webhippie/alpine:latest-amd64@sha256:cf9f805729975a07489df76d012a07401cd0bcad7603456f003c0f35371d3e2b
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
