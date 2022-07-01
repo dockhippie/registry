@@ -1,0 +1,28 @@
+FROM webhippie/golang:1.18-amd64@sha256:f70fb613397042d3128c0508beaa818e13ca1e7777169bca698be9cf65b661c0 as build
+
+# renovate: datasource=github-tags depName=distribution/distribution
+ENV REGISTRY_VERSION=v2.8.1
+
+RUN git clone -b ${REGISTRY_VERSION} https://github.com/distribution/distribution.git /srv/app/src/github.com/docker/distribution && \
+  cd /srv/app/src/github.com/docker/distribution && \
+  GO111MODULE=off go install ./cmd/...
+
+FROM webhippie/alpine:latest-amd64@sha256:cf9f805729975a07489df76d012a07401cd0bcad7603456f003c0f35371d3e2b
+
+VOLUME ["/var/lib/registry"]
+EXPOSE 5000
+
+WORKDIR /var/lib/registry
+CMD ["/usr/bin/container"]
+
+RUN apk update && \
+  apk upgrade && \
+  mkdir -p /var/lib/registry && \
+  groupadd -g 1000 registry && \
+  useradd -u 1000 -d /var/lib/registry -g registry -s /bin/bash -M registry && \
+  rm -rf /var/cache/apk/*
+
+COPY --from=build /srv/app/bin/digest /usr/bin/digest
+COPY --from=build /srv/app/bin/registry-api-descriptor-template /usr/bin/registry-api-descriptor-template
+COPY --from=build /srv/app/bin/registry /usr/bin/registry
+COPY ./overlay /

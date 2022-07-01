@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -eo pipefail
+source /usr/bin/entrypoint
+
+for FILE in $(find /etc/container.d -type f -iname \*.sh | sort); do
+    source ${FILE}
+done
+
+pushd /var/lib/registry >/dev/null
+    echo "> starting registry service"
+    exec su-exec registry registry serve /etc/registry/config.yml
+popd >/dev/null
