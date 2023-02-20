@@ -28,7 +28,7 @@
             "automerge": true
         },
         {
-            "description": "Disable version tag updates",
+            "description": "Update tags without merge",
             "datasources": [
                 "github-tags"
             ],
@@ -37,10 +37,13 @@
                 "minor"
             ],
             "enabled": false,
-            "automerge": false
+            "automerge": false,
+            "matchPackageNames": [
+                "distribution/distribution"
+            ]
         },
         {
-            "description": "Enable version tag updates",
+            "description": "Update tags without merge",
             "datasources": [
                 "github-tags"
             ],
@@ -48,7 +51,10 @@
                 "patch"
             ],
             "enabled": true,
-            "automerge": true
+            "automerge": true,
+            "matchPackageNames": [
+                "distribution/distribution"
+            ]
         }
     ]
 }
