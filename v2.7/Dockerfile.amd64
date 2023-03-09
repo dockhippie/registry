@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.20-amd64@sha256:8f3618ff356c875f4e273e07806565b0ac107a75a7a2c2e17a3b51d752376a61 as build
+FROM webhippie/golang:1.20-amd64@sha256:95a6c9d83eb77317ac517c16c851ef83ea697b7b058ab120eba52862d08603c4 as build
 
 # renovate: datasource=github-tags depName=distribution/distribution
 ENV REGISTRY_VERSION=v2.8.1
@@ -7,7 +7,7 @@ RUN git clone -b ${REGISTRY_VERSION} https://github.com/distribution/distributio
   cd /srv/app/src/github.com/docker/distribution && \
   GO111MODULE=off go install ./cmd/...
 
-FROM webhippie/alpine:latest-amd64@sha256:60fbcf8e1dc60c6f2add1225badaa2f8bb38dfb09880e886cc97324bd4910baf
+FROM webhippie/alpine:latest-amd64@sha256:a7f34d8049f46af2a71044d4bdf21be6d4897c1cd8349d0ff451843f3b573eac
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
