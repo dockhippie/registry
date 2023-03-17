@@ -56,5 +56,8 @@
                 "distribution/distribution"
             ]
         }
+    ],
+    "ignoreDeps": [
+        "docker/build-push-action"
     ]
 }
