@@ -7,7 +7,7 @@ RUN git clone -b ${REGISTRY_VERSION} https://github.com/distribution/distributio
   cd /srv/app/src/github.com/docker/distribution && \
   GO111MODULE=off go install ./cmd/...
 
-FROM ghcr.io/dockhippie/alpine:latest-amd64@sha256:0f01e71f5f6079c7cdba767907024e3aa3b20e2ae6c426dfe18a4f497f57af3b
+FROM ghcr.io/dockhippie/alpine:latest-amd64@sha256:581954ebc2b0530e6938240435409e37670b537135e680ec9d14d989bbb21128
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
