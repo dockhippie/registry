@@ -1,7 +1,7 @@
 FROM ghcr.io/dockhippie/golang:1.20-arm64@sha256:047a36f2b3a995e5272bebb48dc3ff6555bd98c7e8da5c386e59271b2db591cc AS build
 
 # renovate: datasource=github-tags depName=distribution/distribution
-ENV REGISTRY_VERSION=v2.8.1
+ENV REGISTRY_VERSION=v2.7.1
 
 RUN git clone -b ${REGISTRY_VERSION} https://github.com/distribution/distribution.git /srv/app/src/github.com/docker/distribution && \
   cd /srv/app/src/github.com/docker/distribution && \
