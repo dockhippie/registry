@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.21-arm@sha256:e5ec253946d42e10dbab64d1a4be995db1613a08c0161c46ba112ae9733129b6 AS build
+FROM ghcr.io/dockhippie/golang:1.21-arm@sha256:7e4cc492664d098e48e16b8e7a41f96412dcd5a0f0072cc211a522cb7e038409 AS build
 
 # renovate: datasource=github-tags depName=distribution/distribution
 ENV REGISTRY_VERSION=v2.8.2
