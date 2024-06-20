@@ -1,10 +1,10 @@
-FROM ghcr.io/dockhippie/golang:1.21-arm@sha256:276493eb508da614d0ec03b832cad5c8ab5105d7811c8df909f9981cdeccdc89 AS build
+FROM ghcr.io/dockhippie/golang:1.21-arm@sha256:eb3fc0fcc12bdfdcdb2aa08d5355e82d15e88b9d8105f9c5905b719936a606a3 AS build
 
 RUN git clone -b main https://github.com/distribution/distribution.git /srv/app/src && \
   cd /srv/app/src && \
   GO111MODULE=on go install ./cmd/...
 
-FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:0183469e5cf6dfbbfdb0285ad7550818fd41899451c1013bb5bebe286c21e4dc
+FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:ae98e7d8c378250ff7799a4aa80dba4ebf9ef9874c51f304cb5006318bb21b48
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
