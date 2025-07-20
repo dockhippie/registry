@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.23-amd64@sha256:d7e8bcf68fca1c77e6cc246adb6723d5ea9689da98035cb24815cee9b705e0e9 AS build
+FROM ghcr.io/dockhippie/golang:1.23-amd64@sha256:1c27349328e5f7fd6adef304e2ab6390c19746f7164da4056ce29183e119ff13 AS build
 
 RUN git clone -b main https://github.com/distribution/distribution.git /srv/app/src && \
   cd /srv/app/src && \
