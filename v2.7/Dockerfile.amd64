@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.23-amd64@sha256:16d06312dfffc9d36523f2bd06d58855605e65e06e9ce4569b63568a20c2d5c1 AS build
+FROM ghcr.io/dockhippie/golang:1.23-amd64
 
 # renovate: datasource=github-tags depName=distribution/distribution
 ENV REGISTRY_VERSION=v2.7.1
