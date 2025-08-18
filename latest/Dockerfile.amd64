@@ -4,7 +4,7 @@ RUN git clone -b main https://github.com/distribution/distribution.git /srv/app/
   cd /srv/app/src && \
   GO111MODULE=on go install ./cmd/...
 
-FROM ghcr.io/dockhippie/alpine:latest-amd64@sha256:92e5bdba91f11d5b37d837a4a1318ff5d61a0f84c3bc5362353908285db83148
+FROM ghcr.io/dockhippie/alpine:latest-amd64
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
