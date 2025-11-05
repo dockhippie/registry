@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.23-arm@sha256:153e14fdfdd434b3fd4f50a91ad26d452f7f229774df147580c9bfb13af0ebe6 AS build
+FROM ghcr.io/dockhippie/golang:1.23-arm@sha256:b406ab6d0335f2b79952a87722212992d05b3f239babbf7ebc6651fa44988ddc AS build
 
 # renovate: datasource=github-tags depName=distribution/distribution
 ENV REGISTRY_VERSION=v2.7.1
@@ -7,7 +7,7 @@ RUN git clone -b ${REGISTRY_VERSION} https://github.com/distribution/distributio
   cd /srv/app/src/github.com/docker/distribution && \
   GO111MODULE=off go install ./cmd/...
 
-FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:89ca1945d7ac680433a372e2dfeacd6af866b779c772d26d31c0621aa5b0ab89
+FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:57bd91d8abf902aae3087cc1ff2afcdd700c26f28d6484b1c1e38a38ec95a3af
 
 VOLUME ["/var/lib/registry"]
 EXPOSE 5000
