@@ -27,6 +27,8 @@ REGISTRY_HEALTHCHECK_URL = http://localhost:5000
 REGISTRY_SKIP_CHOWN = false
 ```
 
+Extracted by the command: `grep -hE ': "\$\{(.*)\}"' latest/overlay/etc/entrypoint.d/*.sh | sed 's/: "\${//' | sed 's/:="/ = /' | sed 's/"}"$//' | sort | uniq`
+
 ## Inherited environment variables
 
 *  [webhippie/alpine](https://github.com/dockhippie/alpine#available-environment-variables)

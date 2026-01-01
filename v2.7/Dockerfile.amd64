@@ -26,3 +26,7 @@ COPY --from=build /srv/app/bin/digest /usr/bin/digest
 COPY --from=build /srv/app/bin/registry-api-descriptor-template /usr/bin/registry-api-descriptor-template
 COPY --from=build /srv/app/bin/registry /usr/bin/registry
 COPY ./overlay /
+
+RUN find /etc/container.d /etc/entrypoint.d -type f -name \*.sh -exec sed -i 's/\r$//' {} +; \
+  sed -i 's/\r$//' /usr/bin/healthcheck /usr/bin/container && \
+  chmod +x /usr/bin/healthcheck /usr/bin/container /etc/container.d/*.sh /etc/entrypoint.d/*.sh
