@@ -1,7 +1,7 @@
 ---
 repository:
   name: registry
-  description: Docker images for registry
+  description: Docker images for Distribution
   topics: docker, image
 
   private: false
